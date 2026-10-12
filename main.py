@@ -5,6 +5,7 @@ To add your own tool: write a function in section 1 and add it to TOOLS. That's 
 import inspect
 import json
 from datetime import datetime
+from pathlib import Path
 
 from dotenv import load_dotenv
 from groq import Groq
@@ -13,7 +14,8 @@ load_dotenv()  # reads GROQ_API_KEY from .env
 client = Groq()
 
 MODEL = "openai/gpt-oss-120b"  # other models: https://console.groq.com/docs/models
-SYSTEM_PROMPT = "You are a helpful assistant. Use tools when they help."
+# The agent reads context.md before answering. Edit that file to change how it behaves.
+SYSTEM_PROMPT = (Path(__file__).parent / "context.md").read_text()
 
 
 # ---------- 1. TOOLS: plain Python functions ----------

@@ -33,6 +33,11 @@ TOOLS = [get_current_time, multiply, get_weather, roll_dice]
 - The **docstring** is how the AI knows when to use your tool — make it clear.
 - **Type hints** (`str`, `int`, `float`, `bool`) are required on every parameter.
 
+## Give the agent context
+
+The agent reads `context.md` before every conversation (it's the system prompt).
+Edit it in plain English: who the agent is, what it knows, what rules it follows.
+
 ## How tool calling works
 
 1. You send the model your message plus a list of tools it may use.
@@ -43,7 +48,7 @@ TOOLS = [get_current_time, multiply, get_weather, roll_dice]
 ## Things to try
 
 - Make `get_weather` real (https://open-meteo.com needs no key)
-- Change `SYSTEM_PROMPT` to give the AI a personality or a job
+- Edit `context.md` to give the AI a personality, a job, or facts to know
 - Add a tool that reads/writes a file, searches the web, or calls another API
 
 Never commit your `.env` — it's already in `.gitignore`.
